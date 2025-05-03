@@ -4,6 +4,8 @@ import { test, Browser, Page, expect } from '@playwright/test';
     let browser: Browser;
     let page: Page;
 
+    let textoAEscribir = 'Estoy aprendiendo Playwright 🚀';
+
     test.describe('Acciones en el Automation Sandbox', () => {
         test('Click en Botón ID Dinámico', async ({ page }) => {
 
@@ -18,6 +20,15 @@ import { test, Browser, Page, expect } from '@playwright/test';
                 await botonIDDinamico.click({ button: 'right' });
                 await botonIDDinamico.click({ modifiers:['Shift'] });
                 await botonIDDinamico.hover();
+            })
+        })
+
+        test('Lleno un campo de texto en Automation @Sandbox', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Puedo ingresar texto en el campo Un Aburrido Texto', async () => {
+                await page.getByPlaceholder('Ingresá texto').fill(textoAEscribir);
             })
         })
     })
