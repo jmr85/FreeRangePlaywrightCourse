@@ -31,5 +31,28 @@ import { test, Browser, Page, expect } from '@playwright/test';
                 await page.getByPlaceholder('Ingresá texto').fill(textoAEscribir);
             })
         })
+
+        test('Puedo seleccionar y deseleccionar un checkbox en el @Sandbox', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Puedo seleccionar el checkbox para Pasta', async () => {
+                await page.getByLabel('Pasta 🍝').check();
+            })
+
+            await test.step('Puedo deseleccionar el checkbox Pasta', async () => {
+                await page.getByLabel('Pasta 🍝').uncheck();
+            })
+        })
+
+        test('Puedo seleccionar Radio Buttons', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Puedo seleccionar el Radio Button para No', async () => {
+                await page.getByLabel('No').check();
+                //await page.getByLabel('No').uncheck(); -> DA ERROR, NO USAR (no se deselecciona en Radio Buttons)
+            })
+        })
     })
 })();
