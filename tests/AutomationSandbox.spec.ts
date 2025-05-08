@@ -54,5 +54,23 @@ import { test, Browser, Page, expect } from '@playwright/test';
                 //await page.getByLabel('No').uncheck(); -> DA ERROR, NO USAR (no se deselecciona en Radio Buttons)
             })
         })
+
+        test('Puedo seleccionar un item del Dropdown', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Seleccion un deporte del dropdown', async () => {
+                await page.getByLabel('Dropdown').selectOption('Tennis');
+            })
+        })
+        test('Puedo seleccionar un dia del dropdown Dias de la Semana', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Selecciono un dia de la semana del dropdown', async () => {
+                await page.getByRole( 'button', { name: 'Día de la semana'}).click();
+                await page.getByRole('link', { name: 'Martes' }).click();
+            })
+        })
     })
 })();
