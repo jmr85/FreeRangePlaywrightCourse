@@ -72,5 +72,18 @@ import { test, Browser, Page, expect } from '@playwright/test';
                 await page.getByRole('link', { name: 'Martes' }).click();
             })
         })
+        test('Lleno un campo de texto en Automation Sandbox', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Puedo ingresar texto en el campo Un Aburrido Texto', async () => {
+                // await page.getByPlaceholder('Ingresá texto').type(textoAEscribir); 
+                // type() esta deprecated usar en su lugar pressSequentially()
+                await page.getByPlaceholder('Ingresá texto').pressSequentially(textoAEscribir);
+                // Escribe de una letra lentamente
+                await page.getByPlaceholder('Ingresá texto').pressSequentially(textoAEscribir, { delay: 100 });
+                await page.getByPlaceholder('Ingresá texto').press('Shift+ArrowLeft');
+            })
+        })
     })
 })();
