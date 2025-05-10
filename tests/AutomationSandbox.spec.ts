@@ -1,4 +1,6 @@
 import { test, Browser, Page, expect } from '@playwright/test';
+import * as os from 'os';  
+import * as path from 'path';
 
 (async () => {
     let browser: Browser;
@@ -83,6 +85,29 @@ import { test, Browser, Page, expect } from '@playwright/test';
                 // Escribe de una letra lentamente
                 await page.getByPlaceholder('Ingresá texto').pressSequentially(textoAEscribir, { delay: 100 });
                 await page.getByPlaceholder('Ingresá texto').press('Shift+ArrowLeft');
+            })
+        })
+        // Es solo ejemplo, no existe el elemento 'Upload file'. Va a explotar si se ejecuta
+        test('Puedo subir archivos a Automation Sandbox - NO IMPLEMENTADO EN PROD', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Agrego archivos para ser subidos', async () => {
+                const filePath = path.join(os.homedir(), 'Downloads', 'Cupon_pago_2025-05-06.pdf');
+
+                await page.getByLabel('Upload file').setInputFiles(filePath);
+                // await page.getByLabel('Upload file').setInputFiles(['pathAlArchivo.pdf', 'Invoice1.pdf', 'Invoice2.pdf']);
+                await page.getByLabel('Upload file').setInputFiles([]);// para remover todos los archivos seleccionados (vaciar la lista)
+            })
+        })
+
+        // Es solo ejemplo, no existe el elemento 'DragFrom'. Va a explotar si se ejecuta
+        test('Puedo hacer un Drag and Drop de elementos en Automation Sandbox - NO IMPLEMENTADO EN PROD', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Selecciono un día de la semana del dropdown', async () => {
+                await page.getByTestId('DragFrom').dragTo(page.getByTestId('DragTo'));
             })
         })
     })
