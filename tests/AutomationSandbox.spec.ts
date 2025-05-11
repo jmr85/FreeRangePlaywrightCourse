@@ -88,7 +88,7 @@ import * as path from 'path';
             })
         })
         // Es solo ejemplo, no existe el elemento 'Upload file'. Va a explotar si se ejecuta
-        test('Puedo subir archivos a Automation Sandbox - NO IMPLEMENTADO EN PROD', async ({ page }) => {
+        test.skip('Puedo subir archivos a Automation Sandbox - NO IMPLEMENTADO EN PROD', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
                 await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
             })
@@ -102,7 +102,7 @@ import * as path from 'path';
         })
 
         // Es solo ejemplo, no existe el elemento 'DragFrom'. Va a explotar si se ejecuta
-        test('Puedo hacer un Drag and Drop de elementos en Automation Sandbox - NO IMPLEMENTADO EN PROD', async ({ page }) => {
+        test.skip('Puedo hacer un Drag and Drop de elementos en Automation Sandbox - NO IMPLEMENTADO EN PROD', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
                 await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
             })
