@@ -22,5 +22,19 @@ import * as path from 'path';
                 await expect(page.getByLabel('Pasta 🍝')).not.toBeChecked()
             })
         })
+        
+        // toBeVisible()
+        test('Click en Botón ID Dinámico', async ({ page }) => {
+
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+
+            await test.step('Puedo hacer click en el botón con ID dinámico', async () => {
+                const botonIDDinamico = page.getByRole('button', { name: 'Hacé click para generar un ID dinámico y mostrar el elemento oculto' });
+                await botonIDDinamico.click({ force: true });
+                await expect(page.getByText('OMG, aparezco después de 3 segundos de haber hecho click en el botón 👻.')).toBeVisible();
+            })
+        })
     })
 })();
