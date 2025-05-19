@@ -6,6 +6,8 @@ import * as path from 'path';
     let browser: Browser;
     let page: Page;
 
+    let textoAEscribir = 'Estoy aprendiendo Playwright 🚀';
+
     test.describe('Assertions/Validaciones en el Automation @Sandbox', () => {
         // Assertions toBeChecked() y not.toBeChecked()
         test('Puedo seleccionar y deseleccionar un checkbox en el Sandbox', async ({ page }) => {
@@ -34,6 +36,17 @@ import * as path from 'path';
                 const botonIDDinamico = page.getByRole('button', { name: 'Hacé click para generar un ID dinámico y mostrar el elemento oculto' });
                 await botonIDDinamico.click({ force: true });
                 await expect(page.getByText('OMG, aparezco después de 3 segundos de haber hecho click en el botón 👻.')).toBeVisible();
+            })
+        })
+
+        test('Lleno un campo de texto en Automation @Sandbox', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Puedo ingresar texto en el campo Un Aburrido Texto', async () => {
+                await expect(page.getByPlaceholder('Ingresá texto'), 'El campo de texto admite edición').toBeEditable();
+                await page.getByPlaceholder('Ingresá texto').fill(textoAEscribir);
+                await expect(page.getByPlaceholder('Ingresá texto'), `Se esperaba que el campo tuviera el valor "${textoAEscribir}"`).toHaveValue(textoAEscribir);
             })
         })
     })
