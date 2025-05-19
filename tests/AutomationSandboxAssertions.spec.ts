@@ -39,6 +39,7 @@ import * as path from 'path';
             })
         })
 
+        // toBeEditable(), toHaveValue()
         test('Lleno un campo de texto en Automation @Sandbox', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
                 await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
