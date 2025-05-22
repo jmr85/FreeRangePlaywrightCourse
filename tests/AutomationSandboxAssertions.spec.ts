@@ -50,5 +50,25 @@ import * as path from 'path';
                 await expect(page.getByPlaceholder('Ingresá texto'), `Se esperaba que el campo tuviera el valor "${textoAEscribir}"`).toHaveValue(textoAEscribir);
             })
         })
+        // page.$("css locator") y throw new Error()
+        test('Los items del dropdown son los esperados', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Valido que la lista del dropdown contiene los deportes esperados', async () => {
+                const deportes = ['Fútbol', 'Tennis', 'Basketball'];
+
+                for (let opcion of deportes) {
+                    //page.$() Deprecated reemplazar por page.locator()
+                    // const element = await page.$(`select#formBasicSelect > option:is(:text("${opcion}"))`);
+                    const element = page.locator(`select#formBasicSelect > option:is(:text("${opcion}"))`);
+                    if (element) {
+                        console.log(`La opción '${opcion}' está presente.`);
+                    } else {
+                        throw new Error(`La opción '${opcion}' no está presente.`);
+                    }
+                }
+            })
+        })
     })
 })();
