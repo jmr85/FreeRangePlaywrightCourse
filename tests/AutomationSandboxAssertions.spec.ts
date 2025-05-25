@@ -70,5 +70,22 @@ import * as path from 'path';
                 }
             })
         })
+        // $$eval() ó page.locator() con evaluateAll()
+        test('Valido la columna Nombres de la tabla estática', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+
+            await test.step('Puedo validar los elementos para la columna Nombre de la tabla estática', async () => {
+                // const valoresColumnaNombres = await page.$$eval('h2:has-text("Tabla estática") + table tbody tr td:nth-child(2)', elements => elements.map(element => element.textContent));
+               // const valoresColumnaNombres = await page.evaluateAll('h2:has-text("Tabla estática") + table tbody tr td:nth-child(2)', elements => elements.map(element => element.textContent));
+               const valoresColumnaNombres = await page.locator('h2:has-text("Tabla estática") + table tbody tr td:nth-child(2)')
+                .evaluateAll(elements => elements.map(element => element.textContent));
+ 
+               const nombresEsperados = ['Messi', 'Ronaldo', 'Mbappe'];
+                expect(valoresColumnaNombres).toEqual(nombresEsperados);
+            })
+
+        })
     })
 })();
