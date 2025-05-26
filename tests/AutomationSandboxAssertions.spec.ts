@@ -78,7 +78,8 @@ import * as path from 'path';
 
             await test.step('Puedo validar los elementos para la columna Nombre de la tabla estática', async () => {
                 // const valoresColumnaNombres = await page.$$eval('h2:has-text("Tabla estática") + table tbody tr td:nth-child(2)', elements => elements.map(element => element.textContent));
-               // const valoresColumnaNombres = await page.evaluateAll('h2:has-text("Tabla estática") + table tbody tr td:nth-child(2)', elements => elements.map(element => element.textContent));
+               
+                //page.$$eval() Deprecated reemplazar por page.locator() con evaluateAll()
                const valoresColumnaNombres = await page.locator('h2:has-text("Tabla estática") + table tbody tr td:nth-child(2)')
                 .evaluateAll(elements => elements.map(element => element.textContent));
  
@@ -86,6 +87,34 @@ import * as path from 'path';
                 expect(valoresColumnaNombres).toEqual(nombresEsperados);
             })
 
+        })
+        // $$eval() ó page.locator() con evaluateAll() con tabla dinámica
+        test('Valido que todos los valores cambian en la tabla dinámica luego de un reload', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+
+            await test.step('Valido que los valores cambiaron al hacer un reload a la web', async () => {
+                //Creamos un arreglo con todos los valores de la tabla dinámica
+                //const valoresTablaDinamica = await page.$$eval('h2:has-text("Tabla dinámica") + table tbody tr td', elements => elements.map(element => element.textContent));
+                
+                //page.$$eval() Deprecated reemplazar por page.locator() con evaluateAll()
+                const valoresTablaDinamica = await page.locator('h2:has-text("Tabla dinámica") + table tbody tr td')
+                    .evaluateAll(elements => elements.map(element => element.textContent));
+                console.log(valoresTablaDinamica);
+
+                //Hacemos una recarga para que cambien los valores
+                await page.reload();
+
+                //Creamos un segundo arreglo con los valores luego de la recarga
+                // const valoresPostReload = await page.$$eval('h2:has-text("Tabla dinámica") + table tbody tr td', elements => elements.map(element => element.textContent));
+                const valoresPostReload = await page.locator('h2:has-text("Tabla dinámica") + table tbody tr td')
+                    .evaluateAll(elements => elements.map(element => element.textContent));
+                console.log(valoresPostReload);
+
+                //Validamos que todos los valores cambiaron para cada celda.
+                expect(valoresTablaDinamica).not.toEqual(valoresPostReload);
+            })
         })
     })
 })();
