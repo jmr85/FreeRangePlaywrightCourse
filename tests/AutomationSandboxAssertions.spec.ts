@@ -116,5 +116,18 @@ import * as path from 'path';
                 expect(valoresTablaDinamica).not.toEqual(valoresPostReload);
             })
         })
+
+        test('Ejemplo de Soft Assertions', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Valido que todos los elementos de los checkboxes son los correctos', async () => {
+                await expect.soft(page.getByText('Pizza 🍕'), 'El elemento pizza es visible 🍕').toBeVisible();
+                await expect.soft(page.getByText('Hamburguesa 🍔'), 'El elemento Hamburguesa es visible 🍔').toBeVisible();
+                await expect.soft(page.getByText('Pasta 🍝'), 'El elemento Pasta es visible 🍝').toBeVisible();
+                await expect.soft(page.getByText('Helado 🍧'), 'El elemento Helado es visible 🍧').toBeVisible();
+                await expect.soft(page.getByText('Torta 🍰'), 'El elemento Torta es visible 🍰').toBeVisible();
+            })
+        })
     })
 })();
