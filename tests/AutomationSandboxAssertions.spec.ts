@@ -129,5 +129,30 @@ import * as path from 'path';
                 await expect.soft(page.getByText('Torta 🍰'), 'El elemento Torta es visible 🍰').toBeVisible();
             })
         })
+        // Si el popup es un modal HTML dentro de la misma página
+        test('Validando dentro de un popup', async ({ page }) => {
+            await test.step('Dado que navego al sandbox', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+
+            /**
+             Si el popup es un window real que abre una nueva pestaña o ventana:
+             *  const popupPromise = page.waitForEvent('popup');
+                await page.getByText('open the popup').click();
+                const popup = await popupPromise;
+                await popup.waitForLoadState();
+                // validar o imprimir contenido del popup
+                console.log(await popup.title());
+             */
+
+            await test.step('Cuando hago click en el botón popup', async () => {
+                await page.getByRole('button', { name: 'Mostrar popup' }).click();
+            })
+
+            await test.step('Puedo validar un elemento dentro del popup', async () => {
+                await expect(page.getByText('¿Viste? ¡Apareció un Pop-up!')).toHaveText('¿Viste? ¡Apareció un Pop-up!');
+                await page.getByRole('button', { name: 'Cerrar' }).click();
+            })
+        })
     })
 })();
