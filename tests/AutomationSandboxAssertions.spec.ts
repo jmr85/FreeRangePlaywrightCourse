@@ -8,9 +8,9 @@ import * as path from 'path';
 
     let textoAEscribir = 'Estoy aprendiendo Playwright 🚀';
 
-    test.describe('Assertions/Validaciones en el Automation @Sandbox', () => {
+    test.describe('Assertions/Validaciones en el Automation Sandbox', () => {
         // Assertions toBeChecked() y not.toBeChecked()
-        test('Puedo seleccionar y deseleccionar un checkbox en el Sandbox', async ({ page }) => {
+        test('Puedo seleccionar y deseleccionar un checkbox en el @Sandbox', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
                 await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
             })
@@ -130,7 +130,8 @@ import * as path from 'path';
             })
         })
         // Si el popup es un modal HTML dentro de la misma página
-        test('Validando dentro de un popup', async ({ page }) => {
+        test('Validando dentro de un @popup', async ({ page, browserName }) => {
+            //test.skip(browserName === 'chromium', 'No soportado en Chromium');
             await test.step('Dado que navego al sandbox', async () => {
                 await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
             })

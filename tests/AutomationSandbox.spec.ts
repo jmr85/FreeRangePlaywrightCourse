@@ -57,7 +57,7 @@ import * as path from 'path';
             })
         })
 
-        test('Puedo seleccionar un item del Dropdown', async ({ page }) => {
+        test('Puedo seleccionar un item del @Dropdown', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
                 await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
             })
@@ -65,7 +65,11 @@ import * as path from 'path';
                 await page.getByLabel('Dropdown').selectOption('Tennis');
             })
         })
-        test('Puedo seleccionar un dia del dropdown Dias de la Semana', async ({ page }) => {
+        test('Puedo seleccionar un dia del @Dropdown Dias de la Semana', async ({ page }) => {
+            test.info().annotations.push({
+                type: 'User Story 131234',
+                description: 'El usuario puede seleccionar un día del dropdown Días de Semana '
+            });
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
                 await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
             })
