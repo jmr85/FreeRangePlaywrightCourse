@@ -114,5 +114,44 @@ import * as path from 'path';
                 await page.getByTestId('DragFrom').dragTo(page.getByTestId('DragTo'));
             })
         })
+         // Es solo ejemplo, no existe el elemento 'Upload file'. Va a explotar si se ejecuta
+        test.fixme('Puedo subir archivos a Automation Sandbox - NO IMPLEMENTADO EN PROD 2', async ({ page }) => {
+            //test.fixme(); o desde caca dentro es lo mismo
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Agrego archivos para ser subidos', async () => {
+                const filePath = path.join(os.homedir(), 'Downloads', 'Cupon_pago_2025-05-06.pdf');
+
+                await page.getByLabel('Upload file').setInputFiles(filePath);
+                // await page.getByLabel('Upload file').setInputFiles(['pathAlArchivo.pdf', 'Invoice1.pdf', 'Invoice2.pdf']);
+                await page.getByLabel('Upload file').setInputFiles([]);// para remover todos los archivos seleccionados (vaciar la lista)
+            })
+        })
+
+        // Es solo ejemplo, no existe el elemento 'DragFrom'. Va a explotar si se ejecuta
+        test.fixme('Puedo hacer un Drag and Drop de elementos en Automation Sandbox - NO IMPLEMENTADO EN PROD 2', async ({ page }) => {
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Selecciono un día de la semana del dropdown', async () => {
+                await page.getByTestId('DragFrom').dragTo(page.getByTestId('DragTo'));
+            })
+        })
+        // fail()
+        test('Lleno un campo de texto en Automation Sandbox 2 solo para probar annotation fail', async ({ page }) => {
+            test.fail();
+            await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+            })
+            await test.step('Puedo ingresar texto en el campo Un Aburrido Texto', async () => {
+                // await page.getByPlaceholder('Ingresá texto').type(textoAEscribir); 
+                // type() esta deprecated usar en su lugar pressSequentially()
+                await page.getByPlaceholder('Ingresá texto').pressSequentially(textoAEscribir);
+                // Escribe de una letra lentamente
+                await page.getByPlaceholder('Ingresá texto').pressSequentially(textoAEscribir, { delay: 100 });
+                await page.getByPlaceholder('Ingresá texto').press('Shift+ArrowLeft');
+            })
+        })
     })
 })();

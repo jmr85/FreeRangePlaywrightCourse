@@ -71,7 +71,11 @@ import * as path from 'path';
             })
         })
         // $$eval() ó page.locator() con evaluateAll()
-        test('Valido la columna Nombres de la tabla estática', async ({ page }) => {
+        test('Valido la columna Nombres de la @tabla estática', async ({ page }) => {
+            await test.info().attach('screenshot', {
+			    body: await page.screenshot(),
+			    contentType: 'image/png',
+		    })// esta no muestra nada
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
                 await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
             })
@@ -84,12 +88,16 @@ import * as path from 'path';
                 .evaluateAll(elements => elements.map(element => element.textContent));
  
                const nombresEsperados = ['Messi', 'Ronaldo', 'Mbappe'];
-                expect(valoresColumnaNombres).toEqual(nombresEsperados);
+               await test.info().attach('screenshot', {
+			        body: await page.screenshot(),
+			        contentType: 'image/png',
+		       })// esta no muestra nada 
+               expect(valoresColumnaNombres).toEqual(nombresEsperados);
             })
 
         })
         // $$eval() ó page.locator() con evaluateAll() con tabla dinámica
-        test('Valido que todos los valores cambian en la tabla dinámica luego de un reload', async ({ page }) => {
+        test('Valido que todos los valores cambian en la @tabla dinámica luego de un reload', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
                 await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
             })
