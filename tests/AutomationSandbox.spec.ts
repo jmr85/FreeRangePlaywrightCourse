@@ -12,7 +12,7 @@ import * as path from 'path';
         test('Click en Botón ID Dinámico', async ({ page }) => {
 
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
 
             await test.step('Puedo hacer click en el botón con ID dinámico', async () => {
@@ -27,7 +27,7 @@ import * as path from 'path';
 
         test('Lleno un campo de texto en Automation @Sandbox', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Puedo ingresar texto en el campo Un Aburrido Texto', async () => {
                 await page.getByPlaceholder('Ingresá texto').fill(textoAEscribir);
@@ -36,7 +36,7 @@ import * as path from 'path';
 
         test('Puedo seleccionar y deseleccionar un checkbox en el @Sandbox', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Puedo seleccionar el checkbox para Pasta', async () => {
                 await page.getByLabel('Pasta 🍝').check();
@@ -49,7 +49,7 @@ import * as path from 'path';
 
         test('Puedo seleccionar Radio Buttons', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Puedo seleccionar el Radio Button para No', async () => {
                 await page.getByLabel('No').check();
@@ -59,7 +59,7 @@ import * as path from 'path';
 
         test('Puedo seleccionar un item del @Dropdown', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Seleccion un deporte del dropdown', async () => {
                 await page.getByLabel('Dropdown').selectOption('Tennis');
@@ -71,7 +71,7 @@ import * as path from 'path';
                 description: 'El usuario puede seleccionar un día del dropdown Días de Semana '
             });
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Selecciono un dia de la semana del dropdown', async () => {
                 await page.getByRole( 'button', { name: 'Día de la semana'}).click();
@@ -80,7 +80,7 @@ import * as path from 'path';
         })
         test('Lleno un campo de texto en Automation Sandbox', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Puedo ingresar texto en el campo Un Aburrido Texto', async () => {
                 // await page.getByPlaceholder('Ingresá texto').type(textoAEscribir); 
@@ -94,7 +94,7 @@ import * as path from 'path';
         // Es solo ejemplo, no existe el elemento 'Upload file'. Va a explotar si se ejecuta
         test.skip('Puedo subir archivos a Automation Sandbox - NO IMPLEMENTADO EN PROD', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Agrego archivos para ser subidos', async () => {
                 const filePath = path.join(os.homedir(), 'Downloads', 'Cupon_pago_2025-05-06.pdf');
@@ -108,7 +108,7 @@ import * as path from 'path';
         // Es solo ejemplo, no existe el elemento 'DragFrom'. Va a explotar si se ejecuta
         test.skip('Puedo hacer un Drag and Drop de elementos en Automation Sandbox - NO IMPLEMENTADO EN PROD', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Selecciono un día de la semana del dropdown', async () => {
                 await page.getByTestId('DragFrom').dragTo(page.getByTestId('DragTo'));
@@ -118,7 +118,7 @@ import * as path from 'path';
         test.fixme('Puedo subir archivos a Automation Sandbox - NO IMPLEMENTADO EN PROD 2', async ({ page }) => {
             //test.fixme(); o desde caca dentro es lo mismo
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Agrego archivos para ser subidos', async () => {
                 const filePath = path.join(os.homedir(), 'Downloads', 'Cupon_pago_2025-05-06.pdf');
@@ -132,7 +132,7 @@ import * as path from 'path';
         // Es solo ejemplo, no existe el elemento 'DragFrom'. Va a explotar si se ejecuta
         test.fixme('Puedo hacer un Drag and Drop de elementos en Automation Sandbox - NO IMPLEMENTADO EN PROD 2', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Selecciono un día de la semana del dropdown', async () => {
                 await page.getByTestId('DragFrom').dragTo(page.getByTestId('DragTo'));
@@ -142,7 +142,7 @@ import * as path from 'path';
         test('Lleno un campo de texto en Automation Sandbox 2 solo para probar annotation fail', async ({ page }) => {
             test.fail();
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Puedo ingresar texto en el campo Un Aburrido Texto', async () => {
                 // await page.getByPlaceholder('Ingresá texto').type(textoAEscribir); 

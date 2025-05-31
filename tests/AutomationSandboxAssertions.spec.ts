@@ -12,7 +12,7 @@ import * as path from 'path';
         // Assertions toBeChecked() y not.toBeChecked()
         test('Puedo seleccionar y deseleccionar un checkbox en el @Sandbox', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Puedo seleccionar el checkbox para Pasta', async () => {
                 await page.getByLabel('Pasta 🍝').check();
@@ -29,7 +29,7 @@ import * as path from 'path';
         test('Click en Botón ID Dinámico', async ({ page }) => {
 
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
 
             await test.step('Puedo hacer click en el botón con ID dinámico', async () => {
@@ -42,7 +42,7 @@ import * as path from 'path';
         // toBeEditable(), toHaveValue()
         test('Lleno un campo de texto en Automation @Sandbox', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Puedo ingresar texto en el campo Un Aburrido Texto', async () => {
                 await expect(page.getByPlaceholder('Ingresá texto'), 'El campo de texto admite edición').toBeEditable();
@@ -53,7 +53,7 @@ import * as path from 'path';
         // page.$("css locator") y throw new Error()
         test('Los items del dropdown son los esperados', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Valido que la lista del dropdown contiene los deportes esperados', async () => {
                 const deportes = ['Fútbol', 'Tennis', 'Basketball'];
@@ -77,7 +77,7 @@ import * as path from 'path';
 			    contentType: 'image/png',
 		    })// esta no muestra nada
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
 
             await test.step('Puedo validar los elementos para la columna Nombre de la tabla estática', async () => {
@@ -99,7 +99,7 @@ import * as path from 'path';
         // $$eval() ó page.locator() con evaluateAll() con tabla dinámica
         test('Valido que todos los valores cambian en la @tabla dinámica luego de un reload', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
 
             await test.step('Valido que los valores cambiaron al hacer un reload a la web', async () => {
@@ -127,7 +127,7 @@ import * as path from 'path';
 
         test('Ejemplo de Soft Assertions', async ({ page }) => {
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
             await test.step('Valido que todos los elementos de los checkboxes son los correctos', async () => {
                 await expect.soft(page.getByText('Pizza 🍕'), 'El elemento pizza es visible 🍕').toBeVisible();
@@ -141,7 +141,7 @@ import * as path from 'path';
         test('Validando dentro de un @popup', async ({ page, browserName }) => {
             //test.skip(browserName === 'chromium', 'No soportado en Chromium');
             await test.step('Dado que navego al sandbox', async () => {
-                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
+                await page.goto('');
             })
 
             /**
