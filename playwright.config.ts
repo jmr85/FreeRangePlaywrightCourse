@@ -35,6 +35,22 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'Computadora',
+      testMatch: "/AutomationSandbox.spec.ts",
+      retries: 1, // Sobreescribe la config global pero no haria falta
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'iPad',
+      testMatch: "/*.spec.ts",
+      use: { ...devices['iPad (gen 7)'] },
+    },
+    {
+      name: 'iPad landscape',
+      testMatch: "/*.spec.ts",
+      use: { ...devices['iPad (gen 7) landscape'] },
+    },
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
