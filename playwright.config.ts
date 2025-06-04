@@ -29,7 +29,9 @@ export default defineConfig({
     baseURL: 'https://thefreerangetester.github.io/sandbox-automation-testing/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    // trace: 'on-first-retry',
+    trace: 'retain-on-failure',
+    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
@@ -64,7 +66,17 @@ export default defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
-
+    {
+      name: 'APITests',
+      testMatch: 'APITests/**/*',
+      use: {
+        baseURL: 'https://api.github.com',
+        extraHTTPHeaders: {
+          'Accept': 'application/vnd.github.v3+json',
+          'Authorization': `token ${process.env.API_TOKEN}`,
+        }
+      }
+    },
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
