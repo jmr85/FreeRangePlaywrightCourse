@@ -77,6 +77,17 @@ export default defineConfig({
         }
       }
     },
+     {
+      name: 'APITests2',
+      testMatch: 'APITests/APITests2.spec.ts',
+      use: {
+        baseURL: 'https://api.github.com',
+        extraHTTPHeaders: {
+          'Accept': 'application/vnd.github.v3+json',
+          'Authorization': `token ${process.env.API_TOKEN}`,
+        }
+      }
+    },
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
