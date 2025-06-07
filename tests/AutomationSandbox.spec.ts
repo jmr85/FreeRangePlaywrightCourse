@@ -1,4 +1,5 @@
 import { test, Browser, Page, expect } from '@playwright/test';
+import { SandboxPage } from '../pages/SandboxPage';
 import * as os from 'os';  
 import * as path from 'path';
 
@@ -34,16 +35,20 @@ import * as path from 'path';
             })
         })
 
-        test('Puedo seleccionar y deseleccionar un checkbox en el @Sandbox', async ({ page }) => {
+        test.only('Puedo seleccionar y deseleccionar un checkbox en el @Sandbox', async ({ page }) => {
+            const sandboxPage = new SandboxPage(page);
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
                 await page.goto('');
             })
             await test.step('Puedo seleccionar el checkbox para Pasta', async () => {
-                await page.getByLabel('Pasta 🍝').check();
+                // await page.getByLabel('Pasta 🍝').check();
+                await sandboxPage.checkPasta();
             })
 
             await test.step('Puedo deseleccionar el checkbox Pasta', async () => {
-                await page.getByLabel('Pasta 🍝').uncheck();
+                // const sandboxPage = new SandboxPage(page);
+                // await page.getByLabel('Pasta 🍝').uncheck();
+                await sandboxPage.uncheckPasta();
             })
         })
 
